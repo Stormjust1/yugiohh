@@ -1,0 +1,32 @@
+async function searchCards() {
+    const query = document.getElementById('search-input').value;
+    const response = await fetch(`https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${query}`);
+    const data = await response.json();
+    displaySearchResults(data.data);
+}
+
+function displaySearchResults(cards) {
+    const searchResults = document.getElementById('search-results');
+    searchResults.innerHTML = cards.map(c => `<div class="card" draggable="true" data-id="${c.id}"><img src="${c.card_images[0].image_url}"></div>`).join('');
+}
+
+async function fetchTopDecks() {
+    const response = await fetch('https://db.ygoprodeck.com/api/v7/topdecks.php');
+    const data = await response.json();
+    displayTopDecks(data.decks);
+}
+
+function displayTopDecks(decks) {
+    const topDecksContainer = document.getElementById('top-decks');
+    topDecksContainer.innerHTML = decks.map(deck => `
+        <div class="deck">
+            <h3>${deck.name}</h3>
+            <p>Format: ${deck.format}</p>
+            <p>Joueur: ${deck.player}</p>
+            <p>Événement: ${deck.event}</p>
+        </div>
+    `).join('');
+}
+
+document.getElementById('search-button').addEventListener('click', searchCards);
+document.addEventListener('DOMContentLoaded', fetchTopDecks);

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh! Deck Builder</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .deck-section { border: 1px solid #ccc; padding: 10px; margin: 10px; min-height: 100px; }
+        .card { width: 80px; margin: 5px; cursor: pointer; }
+        .deck { background-color: #f4f4f4; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Yu-Gi-Oh! Deck Builder</h1>
+
+    <div>
+        <input type="text" id="search-input" placeholder="Rechercher une carte">
+        <button id="search-button">Rechercher</button>
+    </div>
+    
+    <div id="search-results" class="deck-section"></div>
+
+    <h2>Main Deck</h2>
+    <div id="main-deck" class="deck-section" ondragover="allowDrop(event)" ondrop="drop(event, 'main')"></div>
+
+    <h2>Extra Deck</h2>
+    <div id="extra-deck" class="deck-section" ondragover="allowDrop(event)" ondrop="drop(event, 'extra')"></div>
+
+    <h2>Side Deck</h2>
+    <div id="side-deck" class="deck-section" ondragover="allowDrop(event)" ondrop="drop(event, 'side')"></div>
+
+    <h2>Top Decks</h2>
+    <div id="top-decks" class="deck"></div>
+
+    <script src="code.js">
+       
+    </script>
+</body>
+</html>
